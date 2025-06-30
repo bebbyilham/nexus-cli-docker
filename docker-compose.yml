@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  nexus-cli:
+    build: .
+    env_file: .env
+    container_name: nexus-cli
+    restart: unless-stopped
+    volumes:
+      - ./logs:/root
