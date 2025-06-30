@@ -6,7 +6,5 @@ RUN apt update && apt install -y curl build-essential pkg-config libssl-dev git 
 # Install nexus-cli
 RUN curl -fsSL https://cli.nexus.xyz/ | bash
 
-ENV PATH="/root/.nexus/bin:$PATH"
-
-# Jalankan node dengan log + timestamp
-CMD ["sh", "-c", "nexus-cli start --node-id $NODE_ID 2>&1 | ts '[%Y-%m-%d %H:%M:%S]' >> /root/nexus.log"]
+# Jalankan node dengan log + timestamp, gunakan path absolut
+CMD ["sh", "-c", "/root/.nexus/bin/nexus-cli start --node-id $NODE_ID 2>&1 | ts '[%Y-%m-%d %H:%M:%S]' >> /root/nexus.log"]
